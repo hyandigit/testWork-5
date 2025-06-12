@@ -33,7 +33,7 @@ class GenreController extends CrudController
 
     public function store(GenreStoreRequest $request): bool
     {
-        return $this->service->store($request->all());
+        return $this->service->store($request->all(), $request);
     }
 
     /**
@@ -46,7 +46,7 @@ class GenreController extends CrudController
 
     public function update(GenreUpdateRequest $request, int $id): bool
     {
-        return $this->service->update($id, $request->array());
+        return $this->service->update($id, $request);
     }
 
 

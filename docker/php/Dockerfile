@@ -8,7 +8,7 @@ RUN apk update && apk add --no-cache \
     make \
     openssl-dev
 
-RUN docker-php-ext-install pdo pdo_mysql mysqli 
+RUN docker-php-ext-install pdo pdo_mysql mysqli
 RUN docker-php-ext-install bcmath
 RUN docker-php-ext-enable bcmath mysqli pdo_mysql
 
@@ -24,7 +24,12 @@ RUN apk add --no-cache \
 RUN docker-php-ext-install mbstring
 RUN docker-php-ext-enable mbstring
 
-    
+RUN apk add --no-cache \
+    libpng-dev libwebp-dev libjpeg-turbo-dev freetype-dev \
+  && docker-php-ext-configure gd --enable-gd --with-freetype --with-jpeg --with-webp && \
+      docker-php-ext-install gd
+
+
 COPY --from=composer:latest /usr/bin/composer /usr/local/bin/composer
 ADD ./php.ini /usr/local/etc/php/php.ini
 ADD ./xdebug.ini /usr/local/etc/php/conf.d/docker-php-ext-xdebug.ini
