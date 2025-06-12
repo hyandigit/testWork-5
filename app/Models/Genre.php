@@ -5,9 +5,15 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
+/**
+ * @property int $id Номер
+ * @property string $name Название
+ */
 class Genre extends Model
 {
     use HasFactory;
+
+    protected $fillable = ['name'];
 
     /** RELATIONS */
     public function movies()

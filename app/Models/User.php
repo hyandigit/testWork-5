@@ -10,9 +10,6 @@ use Illuminate\Notifications\Notifiable;
 class User extends Authenticatable
 {
 
-    const ADMIN_GUEST = 1;
-    const USER_GUEST = 2;
-
     /** @use HasFactory<\Database\Factories\UserFactory> */
     use HasFactory, Notifiable;
 
